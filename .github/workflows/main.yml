@@ -1,0 +1,20 @@
+name: Sync with upstream
+on:
+  schedule:
+    - cron: '0 */1 * * *'  # Every 1 hour
+  workflow_dispatch:  # Manual trigger button
+jobs:
+  sync:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+        with:
+          fetch-depth: 0
+          token: ${{ secrets.GITHUB_TOKEN }}
+      - name: Sync upstream
+        run: |
+          git remote add upstream https://github.com/jinming99/learn-ml-by-building
+          git fetch upstream
+          git checkout main
+          git merge upstream/main
+          git push origin main
