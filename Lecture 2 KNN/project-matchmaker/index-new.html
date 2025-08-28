@@ -311,21 +311,26 @@
         let studentData = null;
         let currentStudent = null;
         let plotData = null;
-        let knnLines = [];
+        let knnLines = []; // Initialize the array to hold KNN line traces
+        let plotListenersBound = false; // track Plotly event listener binding
         
         // Load student data
         async function loadData() {
             try {
-                const response = await fetch('student_data.json');
+                const dataUrl = new URL('./student_data.json', window.location.href);
+                // Cache-bust to avoid stale cached 404s and ensure fresh fetch
+                const fetchUrl = `${dataUrl.toString()}?ts=${Date.now()}`;
+                const response = await fetch(fetchUrl, { cache: 'no-store' });
                 if (!response.ok) {
-                    throw new Error('Failed to load student_data.json');
+                    throw new Error(`HTTP ${response.status} ${response.statusText}`);
                 }
                 studentData = await response.json();
                 initializeControls();
                 updateVisualization();
             } catch (error) {
-                console.error('Error loading data:', error);
-                alert('Error loading student_data.json. Please make sure you are running a local server.');
+                console.error('Error loading student_data.json:', error);
+                const hint = `Tried URL: ${window.location.href}\nFetch: ./student_data.json (no-cache)`;
+                alert(`Error loading student_data.json.\n\nDetails: ${error}\n\n${hint}`);
             }
         }
         
@@ -368,9 +373,12 @@
             colorSelect.addEventListener('change', updateVisualization);
             document.getElementById('kSlider').addEventListener('input', (e) => {
                 document.getElementById('kValue').textContent = e.target.value;
-                updateKNN();
+                // Call the main visualization function to ensure a full redraw
+                updateVisualization();
             });
             document.getElementById('userEmail').addEventListener('input', updateVisualization);
+
+            // Plotly click handler will be attached after the plot is created in updateVisualization()
         }
         
         // Calculate Euclidean distance
@@ -498,13 +506,21 @@
                 margin: {t: 20, r: 20, b: 60, l: 60}
             };
             
-            Plotly.newPlot('plotDiv', plotData, layout);
-            
-            // Add click handler
-            document.getElementById('plotDiv').on('plotly_click', function(data) {
-                const student = data.points[0].customdata;
-                selectStudent(student);
+            Plotly.newPlot('plotDiv', plotData, layout).then(() => {
+                const plotDiv = document.getElementById('plotDiv');
+                // Avoid duplicate handlers across redraws
+                if (plotDiv && typeof plotDiv.removeAllListeners === 'function') {
+                    plotDiv.removeAllListeners('plotly_click');
+                }
+                if (plotDiv && typeof plotDiv.on === 'function') {
+                    plotDiv.on('plotly_click', function(data) {
+                        const student = data.points[0].customdata;
+                        selectStudent(student);
+                    });
+                    plotListenersBound = true;
+                }
             });
+            
             
             // Update legend
             updateLegend(feature, colorMap);
@@ -563,6 +579,7 @@
                 </details>
             `;
             
+            // updateKNN will handle drawing the lines without a full redraw
             updateKNN();
         }
         
@@ -573,11 +590,16 @@
             const k = parseInt(document.getElementById('kSlider').value);
             const neighbors = findKNN(currentStudent, k);
             
-            // Remove existing KNN lines
-            knnLines.forEach(line => {
-                Plotly.deleteTraces('plotDiv', [plotData.length]);
-            });
-            knnLines = [];
+            // Remove previous KNN lines from the plot
+            if (knnLines.length > 0) {
+                const tracesToRemove = [];
+                for (let i = 0; i < knnLines.length; i++) {
+                    // The first trace is the scatter plot, so we start from trace index 1
+                    tracesToRemove.push(i + 1);
+                }
+                Plotly.deleteTraces('plotDiv', tracesToRemove);
+                knnLines = []; // Clear the array
+            }
             
             // Add new KNN lines
             const xDim = document.getElementById('xDimension').value;
