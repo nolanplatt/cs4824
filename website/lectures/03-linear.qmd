@@ -22,9 +22,9 @@ By the end of this lecture, you will:
 
 :::{.callout-tip}
 ## Quick Access
-**[Linear Regression Notebook](https://github.com/jinming99/learn-ml-by-building/blob/main/Lecture%203%20Linear/03-Linear-Regression.ipynb)**  
-**[Open in Colab](https://colab.research.google.com/github/jinming99/learn-ml-by-building/blob/main/Lecture%203%20Linear/03-Linear-Regression.ipynb)**  
-**[Lecture Folder](https://github.com/jinming99/learn-ml-by-building/tree/main/Lecture%203%20Linear)**
+**[Linear Regression Notebook](https://github.com/jinming99/learn-ml-by-building/blob/main/Lecture%203%20Linear%20Regression/03-Linear-Regression.ipynb)**  
+**[Open in Colab](https://colab.research.google.com/github/jinming99/learn-ml-by-building/blob/main/Lecture%203%20Linear%20Regression/03-Linear-Regression.ipynb)**  
+**[Lecture Folder](https://github.com/jinming99/learn-ml-by-building/tree/main/Lecture%203%20Linear%20Regression)**
 :::
 
 :::{.callout-important collapse=false}
