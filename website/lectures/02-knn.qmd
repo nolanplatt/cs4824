@@ -36,7 +36,7 @@ Complete the [Project Matchmaker Form](https://docs.google.com/forms/d/e/1FAIpQL
 
 :::{.callout-note}
 ## 🎮 Team Matcher Visualization
-Experience k-NN in action with our **[Interactive Team Matching Demo](https://github.com/jinming99/learn-ml-by-building/tree/main/Lecture%202%20KNN/project-matchmaker)**
+Experience k-NN in action with our **[Interactive Team Matching Demo](../project-matchmaker/)**
 
 This real-time visualization lets you:
 

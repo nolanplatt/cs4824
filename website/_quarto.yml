@@ -1,6 +1,10 @@
 project:
   type: website
   output-dir: ../docs
+  resources:
+    - project-matchmaker/**
+    - project-matchmaker/*
+    - project-matchmaker/student_data.json
 
 website:
   title: "ECE4424/CS4824: Machine Learning"
@@ -21,6 +25,8 @@ website:
         href: projects/project1.qmd
       - text: "Resources"
         href: resources.qmd
+      - text: "Project Matchmaker"
+        href: project-matchmaker/
     right:
       - icon: github
         href: https://github.com/jinming99/learn-ml-by-building
