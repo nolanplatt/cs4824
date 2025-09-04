@@ -28,6 +28,10 @@ data/processed/
 # Allow whitelisted small samples (commit if needed)
 !data/samples/**
 
+# Allow committing all data in this project (override ignores above)
+!data/
+!data/**
+
 # Jupyter exports
 *.nbconvert.html
 *_nbconvert.html
