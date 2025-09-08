@@ -1,6 +1,5 @@
 project:
   type: website
-  output-dir: ../docs
   resources:
     - project-matchmaker/**
     - project-matchmaker/*

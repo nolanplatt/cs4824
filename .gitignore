@@ -23,8 +23,13 @@ venv_macbook/
 Lecture 1 Overview/venv_lecture1/
 lecture1_overview_env/
 
+# Local machine-specific virtual environments
+p02-macstudio/
+venv_office_p02/
+
 # Lecture 3 Linear Regression specific venv
 Lecture 3 Linear Regression/linear_regression_env/
+Lecture 3 Linear Regression/lecture3_macbook_venv/
 
 # ===== OS-generated files (macOS) =====
 .DS_Store
@@ -63,12 +68,6 @@ dist/
 # Resource folders produced alongside HTML exports
 **/*_files/
 
-# Unignore Quarto site outputs for lectures (numbered HTML) published under docs/
-!docs/lectures/??-*.html
-
-# Blanket allow all Quarto-built HTML in docs/ (GitHub Pages deploy artifacts)
-!docs/**/*.html
-
 # ===== Large data files =====
 # Git cannot filter by size in .gitignore. As a policy, do not commit files >1MB.
 # Prefer download links or scripts to fetch data.
@@ -97,6 +96,11 @@ dist/
 
 # Keep small sample data
 !data/sample_datasets/*.csv
+
+# Allow committing data for Project 1 KNN Music Recommender
+# (override the global **/data/** ignores above)
+!Project 1 KNN Music Recommender/data/
+!Project 1 KNN Music Recommender/data/**
 
 # ===== Project specific =====
 kaggle.json
@@ -141,9 +145,12 @@ models/*
 !models/lecture_assets/*.jpg
 !models/lecture_assets/*.svg
 
+# ===== External subprojects =====
+representation-engineering-main/
+
 # ===== Quarto website build artifacts =====
-# Keep docs/ committed because GitHub Pages serves from /docs (configured in website/_quarto.yml)
-# DO NOT ignore docs/ unless you deploy elsewhere (Netlify/Quarto Pub).
+# Using gh-pages for deployment; ignore local build directories and docs/
+docs/
 website/_site/
 website/.quarto/
 .quarto/
@@ -167,3 +174,5 @@ coverage.xml
 # ===== Project 1 KNN Music Recommender: local env & checkpoints =====
 Project 1 KNN Music Recommender/.venv-music/
 Project 1 KNN Music Recommender/.ipynb_checkpoints/
+models/lecture_assets/comprehensive_analysis.png
+models/lecture_assets/slide_visualization.png
