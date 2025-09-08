@@ -20,5 +20,9 @@ jobs:
           git remote add upstream https://github.com/jinming99/learn-ml-by-building
           git fetch upstream
           git checkout main
-          git merge upstream/main
+          git merge upstream/main -X theirs || {
+            echo "Merge conflicts detected, resolving automatically"
+            git status --porcelain | grep "^UU" | awk '{print $2}' | xargs git add
+            git commit -m "Auto-resolve merge conflicts with upstream changes"
+          }
           git push origin main
