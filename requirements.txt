@@ -16,6 +16,10 @@ scipy>=1.7.0
 # Machine Learning
 scikit-learn>=1.0.0
 
+# Deep Learning
+torch==2.2.2
+torchvision==0.17.2
+
 # Jupyter
 jupyter>=1.0.0
 ipykernel>=6.0.0

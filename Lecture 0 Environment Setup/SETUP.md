@@ -73,9 +73,9 @@ python -m pip install --upgrade pip
 python -m pip install -r requirements.txt
 ```
 
-Note: On macOS/Linux you may prefer `python3 -m pip ...`; both are fine when the environment is activated.
-
-This will take 5-10 minutes and download ~1GB of packages.
+  Note: On macOS/Linux you may prefer `python3 -m pip ...`; both are fine when the environment is activated.
+  
+  This will take 5-15 minutes and download several hundred MB of packages. The requirements include deep learning dependencies `torch==2.2.2` and `torchvision==0.17.2`.
 
 ## Step 4: Launch Jupyter Notebook
 
@@ -86,6 +86,17 @@ jupyter notebook
 ```
 
 This will open your browser. Navigate to `00-Environment-Setup.ipynb` and open it.
+
+### RISE slides and interactive widgets
+- RISE is installed and enabled. In the classic Notebook toolbar, look for the "Enter/Exit RISE Slideshow" button.
+- ipywidgets is installed and enabled. Test with a quick cell:
+  
+```python
+import ipywidgets as widgets
+widgets.IntSlider(description="Test")
+```
+
+If the RISE button is missing or widgets don't render, make sure you launched Jupyter from the activated environment so it uses the correct interpreter.
 
 ### Optional: Register this environment as a Jupyter kernel
 This lets you pick the kernel by name inside Jupyter.
@@ -103,6 +114,11 @@ python -m ipykernel install --user --name ml_lectures_env --display-name "Python
 ### "jupyter: command not found"
 - Make sure virtual environment is activated (you see `(ml_lectures_env)`)
 - Reinstall with interpreter-scoped pip: `python -m pip install jupyter notebook`
+
+### "ModuleNotFoundError: No module named 'torch'"
+- Ensure you've installed the repo requirements: `python -m pip install -r requirements.txt`
+- Or install directly: `python -m pip install torch torchvision`
+- Restart the Notebook kernel after installation (Kernel → Restart Kernel) and re-run your cells.
 
 ### Permission errors
 - Avoid using `sudo` with pip. Ensure your virtual environment is activated and try again.

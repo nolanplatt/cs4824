@@ -1,0 +1,56 @@
+---
+title: "Lecture 4: Gradient Descent and Optimization"
+subtitle: "From Theory to Practice - The Engine That Powers Machine Learning"
+---
+
+## Overview
+
+Gradient descent is the fundamental algorithm that makes modern machine learning possible. In this comprehensive lecture, we'll journey from manually finding the "best line" through interactive widgets to implementing gradient descent from scratch, exploring SGD variants, and mastering debugging techniques. Using the California Housing dataset, you'll build deep intuition about how optimization works, why data standardization is critical, and how to diagnose and fix common training failures.
+
+## Learning Objectives
+
+By the end of this lecture, you will:
+
+- Formulate optimization problems in machine learning
+- Implement gradient descent from scratch with proper numerical stability
+- Master the critical importance of data standardization
+- Compare batch, stochastic, and mini-batch gradient descent variants
+- Diagnose and fix gradient explosion/vanishing problems
+- Apply modern optimizers (Adam, SGD with momentum) effectively
+
+## Materials
+
+:::{.callout-tip}
+## Quick Access
+**[Optimization Notebook](https://github.com/jinming99/learn-ml-by-building/blob/main/Lecture%204%20Optimization/04-Optimization-GD.ipynb)**
+:::
+
+:::{.callout-important collapse=false}
+## Pre-Class Requirements
+- Python environment with NumPy, scikit-learn, matplotlib, and PyTorch
+- Basic calculus knowledge (derivatives, chain rule)
+- Familiarity with linear regression concepts from Lecture 3
+:::
+
+## Key Concepts & Highlights
+
+- Interactive Line Fitting Game
+  Start by manually adjusting weights and biases to minimize loss. This hands-on experience builds intuition for what gradient descent automates—finding the lowest point in the loss landscape.
+
+- The #1 Pitfall: Data Standardization
+  Learn why unstandardized data causes gradient explosion and how proper preprocessing prevents this. We'll demonstrate why gradients scale with data magnitude and provide diagnostic tools to catch this early.
+
+- Three Flavors of SGD
+  Compare batch, stochastic, and mini-batch gradient descent side-by-side. Understand the speed vs. accuracy trade-offs and why mini-batch has become the industry standard.
+
+- Debugging Toolkit
+  Master systematic debugging with our gradient diagnostic dashboard that detects vanishing/exploding gradients, loss plateaus, and oscillations—complete with suggested fixes for each problem.
+
+## Datasets & Acknowledgments
+
+### California Housing Dataset
+- Source: **[Scikit-learn California housing dataset](https://scikit-learn.org/stable/modules/generated/sklearn.datasets.fetch_california_housing.html)**- Why This Dataset: Strong income–price correlation makes it perfect for demonstrating optimization concepts while being complex enough to show real challenges
+
+---
+
+**Previous**: [← Lecture 3: Linear Regression](03-linear.qmd) | **Next**: Lecture 5: Regularization (Coming Soon)

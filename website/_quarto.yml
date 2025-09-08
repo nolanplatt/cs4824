@@ -56,7 +56,9 @@ website:
             href: lectures/02-knn.qmd
           - text: "L3: Linear Regression"
             href: lectures/03-linear.qmd
-          - text: "L4-6: Coming Soon"
+          - text: "L4: Gradient Descent and Optimization"
+            href: lectures/04-optimization.qmd
+          - text: "L5-6: Coming Soon"
             href: "#"
       
       - section: "Module 2: Let's Understand"

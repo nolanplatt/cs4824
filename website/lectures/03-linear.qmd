@@ -43,4 +43,4 @@ Complete the [Environment Setup Guide](https://github.com/jinming99/learn-ml-by-
 
 ---
 
-**Previous**: [← Lecture 2: k-NN](02-knn.qmd) | **Next**: Lecture 4: Logistic Regression (Coming Soon)
+**Previous**: [← Lecture 2: k-NN](02-knn.qmd) | **Next**: [Lecture 4: Gradient Descent and Optimization →](04-optimization.qmd)
