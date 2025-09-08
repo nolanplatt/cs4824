@@ -15,7 +15,7 @@ jobs:
         run: |
           git config --global user.email "actions@github.com"
           git config --global user.name "GitHub Actions"
-      - name: Sync upstream
+      - name: Sync upstream (excluding workflows)
         run: |
           git remote add upstream https://github.com/jinming99/learn-ml-by-building
           git fetch upstream
@@ -25,4 +25,7 @@ jobs:
             git status --porcelain | grep "^UU" | awk '{print $2}' | xargs git add
             git commit -m "Auto-resolve merge conflicts with upstream changes"
           }
+          # Remove any new workflow files that came from upstream
+          git rm -rf .github/workflows/quarto-publish.yml 2>/dev/null || true
+          git commit -m "Remove upstream workflow files" 2>/dev/null || true
           git push origin main
