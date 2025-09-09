@@ -342,15 +342,36 @@
             { id: 'tempo', name: 'Tempo', isBpm: true, min: 60, max: 200, step: 5, value: 120 },
             { id: 'instrumentalness', name: 'Instrumentalness', isBpm: false, min: 0, max: 1, step: 0.05, value: 0.5 },
         ];
+        // Small static track list with public sample MP3s for demo playback
+        const STATIC_TRACKS = [
+          { id: 'sh1', song: 'SoundHelix Song 1', artist: 'SoundHelix', albumart: 'https://placehold.co/300x300?text=Album+1', previewUrl: 'https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3' },
+          { id: 'sh2', song: 'SoundHelix Song 2', artist: 'SoundHelix', albumart: 'https://placehold.co/300x300?text=Album+2', previewUrl: 'https://www.soundhelix.com/examples/mp3/SoundHelix-Song-2.mp3' },
+          { id: 'sh3', song: 'SoundHelix Song 3', artist: 'SoundHelix', albumart: 'https://placehold.co/300x300?text=Album+3', previewUrl: 'https://www.soundhelix.com/examples/mp3/SoundHelix-Song-3.mp3' },
+          { id: 'sh4', song: 'SoundHelix Song 4', artist: 'SoundHelix', albumart: 'https://placehold.co/300x300?text=Album+4', previewUrl: 'https://www.soundhelix.com/examples/mp3/SoundHelix-Song-4.mp3' },
+          { id: 'sh5', song: 'SoundHelix Song 5', artist: 'SoundHelix', albumart: 'https://placehold.co/300x300?text=Album+5', previewUrl: 'https://www.soundhelix.com/examples/mp3/SoundHelix-Song-5.mp3' },
+          { id: 'sh6', song: 'SoundHelix Song 6', artist: 'SoundHelix', albumart: 'https://placehold.co/300x300?text=Album+6', previewUrl: 'https://www.soundhelix.com/examples/mp3/SoundHelix-Song-6.mp3' },
+        ];
         const playerBar = document.getElementById('musicPlayerBar');
         const floatingPanel = document.getElementById('floatingPanel');
 
         window.addEventListener('DOMContentLoaded', () => {
-            // Populate UI controls only; do not fetch any data
+            // Populate UI controls and static featured tracks; no backend calls
             populateDynamicControls();
             setupPlayer();
-            document.getElementById('featuredMusic').innerHTML = '<p style="color:#b3b3b3;">Static preview: featured music is disabled.</p>';
+            displayFeaturedMusic(STATIC_TRACKS);
         });
+
+        function displayFeaturedMusic(songs) {
+            document.getElementById('featuredMusic').innerHTML = songs.map(song => `
+                <div class="music-card" onclick='handleSongClick(${JSON.stringify(song)})'>
+                    <img src="${song.albumart || 'https://placehold.co/300x300'}" alt="${escapeHtml(song.song)}" class="music-card-image" onerror="this.onerror=null;this.src='https://placehold.co/300x300/181818/fff?text=Error';">
+                    <div class="play-button">&#9654;</div>
+                    <div class="music-card-overlay">
+                        <div class="music-card-title">${escapeHtml(song.song)}</div>
+                        <div class="music-card-artist">${escapeHtml(song.artist)}</div>
+                    </div>
+                </div>`).join('');
+        }
 
         function populateDynamicControls() {
             const profileContainer = document.getElementById('profileSlidersContainer');
@@ -389,7 +410,69 @@
                     </div>
                 </div>
                 <div style="width: 30%;"></div>`;
-            playerBar.querySelector('.play-pause-btn').addEventListener('click', () => showToast('Demo-only: playback disabled', 'error'));
+            playerBar.querySelector('.play-pause-btn').addEventListener('click', togglePlayPause);
+            playerBar.querySelector('.progress-bar').addEventListener('click', seek);
+        }
+
+        function handleSongClick(song) {
+            playSong(song);
+        }
+
+        // Basic audio playback from static previewUrl
+        async function playSong(song) {
+            const token = ++currentPlayToken;
+            if (currentAudio) { try { currentAudio.pause(); } catch (_) {} }
+            playerBar.classList.add('visible');
+            updatePlayerUI(song, true);
+            const url = song.previewUrl;
+            if (!url) { showToast('No preview available for this track', 'error'); updatePlayerUI(song, false, true); return; }
+            const audio = new Audio(url);
+            if (token !== currentPlayToken) { try { audio.pause(); } catch(_){} return; }
+            audio.addEventListener('loadedmetadata', () => {
+                if (token !== currentPlayToken) return;
+                playerBar.querySelector('.duration').textContent = formatTime(audio.duration || 0);
+            });
+            audio.addEventListener('timeupdate', () => { if (token === currentPlayToken) updateProgress(); });
+            audio.addEventListener('ended', () => { if (token === currentPlayToken) playerBar.querySelector('.play-pause-btn').innerHTML = '&#9654;'; });
+            currentAudio = audio;
+            audio.play().then(() => {
+                if (token !== currentPlayToken) { try { audio.pause(); } catch(_){} }
+            }).catch(e => {
+                showToast(`Playback error: ${e.message}`, 'error');
+                updatePlayerUI(song, false, true);
+            });
+            updatePlayerUI(song, false);
+        }
+
+        function togglePlayPause() {
+            if (!currentAudio || !currentAudio.src) return;
+            const btn = playerBar.querySelector('.play-pause-btn');
+            if (currentAudio.paused) { currentAudio.play(); btn.innerHTML = '&#10074;&#10074;'; }
+            else { currentAudio.pause(); btn.innerHTML = '&#9654;'; }
+        }
+
+        function updatePlayerUI(song, isLoading, isPaused = false) {
+            const [titleEl, artistEl, artEl, btn] = ['.title', '.artist', '.player-album-art', '.play-pause-btn'].map(sel => playerBar.querySelector(sel));
+            titleEl.textContent = isLoading ? 'Loading...' : song.song;
+            artistEl.textContent = isLoading ? '' : song.artist;
+            artEl.src = song.albumart || 'https://placehold.co/50x50';
+            btn.innerHTML = isLoading ? '...' : (isPaused ? '&#9654;' : '&#10074;&#10074;');
+        }
+
+        function updateProgress() {
+            if (!currentAudio || !currentAudio.duration) return;
+            const currentTimeEl = playerBar.querySelector('.current-time');
+            const progressBarFilled = playerBar.querySelector('.progress-bar-filled');
+            currentTimeEl.textContent = formatTime(currentAudio.currentTime);
+            progressBarFilled.style.width = `${(currentAudio.currentTime / currentAudio.duration) * 100}%`;
+        }
+
+        function seek(e) {
+            if (!currentAudio || !currentAudio.duration) return;
+            const progressBar = playerBar.querySelector('.progress-bar');
+            const rect = progressBar.getBoundingClientRect();
+            const percent = (e.clientX - rect.left) / rect.width;
+            currentAudio.currentTime = percent * currentAudio.duration;
         }
 
         // Demo-only: disable all API calls
@@ -408,6 +491,7 @@
         function updateGlobalDistanceMetric() { globalAlgorithmSettings.metric = document.querySelector('input[name="globalDistance"]:checked').value; }
         function updateGlobalFeatureSelection() { globalAlgorithmSettings.features = Array.from(document.querySelectorAll('#featureSelectionContainer input:checked')).map(cb => cb.id.replace('global_feature_', '')); }
         function escapeHtml(unsafe) { return unsafe?.toString().replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;").replace(/"/g, "&quot;").replace(/'/g, "&#039;") || ''; }
+        function formatTime(seconds) { const m = Math.floor(seconds / 60), s = Math.floor(seconds % 60); return `${m}:${s < 10 ? '0' : ''}${s}`; }
         function scrollToSection(e, id) { if(e) e.preventDefault(); document.getElementById(id)?.scrollIntoView({ behavior: 'smooth', block: 'start' }); }
         
         function showToast(message, type = 'success') {
