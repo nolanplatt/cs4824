@@ -25,6 +25,7 @@ By completing this project, you will:
 ## Quick Access
 **[Project Notebook (GitHub)](https://github.com/jinming99/learn-ml-by-building/blob/main/Project%201%20KNN%20Music%20Recommender/music_recommender.ipynb)** — Complete implementation guide and assignment  
 **[Repository](https://github.com/jinming99/learn-ml-by-building)** — Full codebase with web application  
+**[Live Demo (Static UI)](https://jinming99.github.io/learn-ml-by-building/demos/p1-music/)** — UI preview only (no backend)  
 **[Live Demo](http://localhost:5002)** — after running `python app.py`
 :::
 
