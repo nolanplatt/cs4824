@@ -62,11 +62,11 @@ def check_student_implementation():
             student_recommender = StudentKNN(k=10)
             student_recommender.fit(ITEM_PROFILE, audio_features)
             STUDENT_IMPLEMENTATION_AVAILABLE = True
-            print("✅ Student k-NN implementation loaded successfully!")
+            print("[OK] Student k-NN implementation loaded successfully!")
             return True
             
     except Exception as e:
-        print(f"⚠️ Student implementation not ready: {e}")
+        print(f"[WARNING] Student implementation not ready: {e}")
         print("Complete your implementation in utils/student_adapter.py")
         return False
 
