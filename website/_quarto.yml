@@ -60,12 +60,14 @@ website:
             href: lectures/04-optimization.qmd
           - text: "L5: Probabilistic Classification"
             href: lectures/05-probclass.qmd
-          - text: "L6: Decision Trees (Coming Soon)"
-            href: "#"
       
       - section: "Module 2: Let's Understand"
         contents:
-          - text: "L7-11: Coming Soon"
+          - text: "L6: Model Evaluation and Data Deception"
+            href: lectures/06-model-eval.qmd
+          - text: "L7: Overfitting and Regularization"
+            href: lectures/07-regularization.qmd
+          - text: "L8-11: Coming Soon"
             href: "#"
       
       - section: "Module 3: Let's Discover"
