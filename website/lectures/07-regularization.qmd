@@ -13,7 +13,7 @@ By the end of this lecture, you will:
 
 - Detect overfitting early using validation sets and learning curves
 - Understand the bias-variance tradeoff through interactive visualizations
-- Master classical regularization techniques (L1/L2, dropout, early stopping)
+- Master classical regularization techniques (L1/L2, early stopping)
 - Apply modern approaches (label smoothing, mixup augmentation)
 - Explore data-centric solutions through quantity and diversity experiments
 
