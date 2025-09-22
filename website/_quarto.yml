@@ -69,9 +69,11 @@ website:
             href: lectures/07-regularization.qmd
           - text: "L8: Modern Decision Trees"
             href: lectures/08-decision-trees.qmd
-          - text: "L9-L11: Coming Soon"
+          - text: "L9: Ensemble Methods"
+            href: lectures/09-ensemble.qmd
+          - text: "L10-11: Coming Soon"
             href: "#"
-      
+            
       - section: "Module 3: Let's Discover"
         contents:
           - text: "L12-13: Coming Soon"

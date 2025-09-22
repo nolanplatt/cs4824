@@ -38,4 +38,7 @@ nbconvert>=6.0.0
 # For better progress bars
 tqdm>=4.62.0
 
+# Image processing (for HOG features)
+scikit-image>=0.20.0
+
 
