@@ -67,7 +67,9 @@ website:
             href: lectures/06-model-eval.qmd
           - text: "L7: Overfitting and Regularization"
             href: lectures/07-regularization.qmd
-          - text: "L8-11: Coming Soon"
+          - text: "L8: Modern Decision Trees"
+            href: lectures/08-decision-trees.qmd
+          - text: "L9-L11: Coming Soon"
             href: "#"
       
       - section: "Module 3: Let's Discover"
