@@ -33,7 +33,7 @@ By the end of this lecture, you will:
 - Home Credit Default Risk (Kaggle): real-world credit risk dataset used throughout the lecture.
   - Source: https://www.kaggle.com/competitions/home-credit-default-risk
   - Please review the dataset license and Kaggle terms of use before redistribution
-- Libraries: scikit-learn (trees/metrics/visualization), PyTorch (soft trees), NumPy, pandas, seaborn, matplotlib
+- Libraries: scikit-learn (trees/metrics/visualization), PyTorch (soft trees)
 - Soft Decision Trees (prior work):
   - Frosst, N., & Hinton, G. (2017). Distilling a Neural Network Into a Soft Decision Tree
   - Kontschieder, P., Fiterau, M., Criminisi, A., & Bulo, S. R. (2015). Deep Neural Decision Forests (ICCV)
