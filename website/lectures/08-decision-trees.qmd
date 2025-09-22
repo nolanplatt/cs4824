@@ -41,4 +41,4 @@ By the end of this lecture, you will:
 
 ---
 
-**Previous**: [← Lecture 7: Overfitting and Regularization](07-regularization.qmd) | **Next**: TBD
+**Previous**: [← Lecture 7: Overfitting and Regularization](07-regularization.qmd) | **Next**: [Lecture 9: Ensemble Methods →](09-ensemble.qmd)
