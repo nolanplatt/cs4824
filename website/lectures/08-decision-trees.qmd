@@ -6,6 +6,7 @@ subtitle: "From Hard Splits to Differentiable Soft Trees"
 ## Overview
 
 In this lecture, we move from classical decision trees to modern perspectives:
+
 - Why axis-aligned splits can be limiting, and how depth affects overfitting
 - Practical strategies for class imbalance (resampling vs class-weighting)
 - Differentiable (soft) decision trees that enable gradient-based learning

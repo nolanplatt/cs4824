@@ -6,6 +6,7 @@ subtitle: "From Bagging and Boosting to Deep Ensembles"
 ## Overview
 
 In this lecture, we study why and how multiple weak/strong learners can be combined to outperform single models:
+
 - Bagging and Random Forests: bootstrap sampling, feature subspaces, OOB estimation, and variance reduction
 - Boosting (AdaBoost/Gradient Boosting): sequentially reducing bias
 - Diversity and agreement: why uncorrelated errors matter; majority vs soft voting
