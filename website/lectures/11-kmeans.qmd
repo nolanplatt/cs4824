@@ -1,0 +1,40 @@
+---
+title: "Lecture 11: K-Means Clustering"
+subtitle: "Finding Groups in Unsupervised Learning"
+---
+
+## Overview
+
+In this lecture, we explore unsupervised learning through K-Means clustering - one of the most fundamental algorithms for discovering hidden patterns and structures in unlabeled data. Unlike supervised learning where we have labels to guide us, clustering reveals natural groupings in data without any prior knowledge. We begin with an introduction to the clustering paradigm, then dive into the K-Means algorithm's mathematical foundations, including its objective function (WCSS) and iterative optimization process. Through a from-scratch implementation, we'll understand the assignment and update steps that drive the algorithm. We'll apply K-Means to real-world applications like document clustering with TF-IDF, customer segmentation, and image compression. You'll learn to evaluate clustering quality using metrics like silhouette score, Davies-Bouldin index, and Calinski-Harabasz score, and master techniques for choosing the optimal number of clusters K through the elbow method, silhouette analysis, and gap statistics. Finally, we'll explore K-Means variants including MiniBatch K-Means for large-scale data and K-Means++ initialization for improved convergence.
+
+## Learning Objectives
+
+By the end of this lecture, you will:
+
+- Understand the fundamental concepts of clustering and unsupervised learning
+- Master the K-Means algorithm, including its mathematical foundations and convergence properties
+- Apply K-Means to real-world data including text documents and images
+- Evaluate clustering quality using multiple metrics (silhouette, Davies-Bouldin, Calinski-Harabasz)
+- Choose optimal parameters (K) using data-driven approaches like the elbow method
+- Recognize the strengths and limitations of K-Means (spherical clusters, sensitivity to initialization)
+- Compare K-Means with its variants (MiniBatch K-Means, K-Means++) for different scenarios
+
+## Materials
+
+::: {.callout-tip}
+## Quick Access
+**[K-Means Clustering Notebook](https://github.com/jinming99/learn-ml-by-building/blob/main/Lecture%2011%20K-Means/11-KMeans.ipynb)**
+:::
+
+## Datasets & Acknowledgments
+
+- **20 Newsgroups** (Ken Lang): Text documents from 20 different newsgroups used to demonstrate document clustering
+  - Source: http://qwone.com/~jason/20Newsgroups/
+  - Downloaded automatically by scikit-learn when running the notebook
+  - Subset used: 4 categories (comp.graphics, rec.sport.baseball, sci.med, talk.politics.mideast)
+- **Synthetic Datasets**: Generated using scikit-learn's `make_blobs` for visualization and pedagogical purposes
+- **Libraries**: scikit-learn (K-Means implementation, metrics), NumPy (numerical operations), Matplotlib/Seaborn (visualization)
+
+---
+
+**Previous**: [← Lecture 10: Kernel Methods & Gaussian Processes](10-kernel-gp.qmd) | **Next**: TBD

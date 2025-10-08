@@ -73,11 +73,11 @@ website:
             href: lectures/09-ensemble.qmd
           - text: "L10: Kernel Methods & Gaussian Processes"
             href: lectures/10-kernel-gp.qmd
-          - text: "L11: Coming Soon"
-            href: "#"
             
       - section: "Module 3: Let's Discover"
         contents:
+          - text: "L11: K-Means Clustering"
+            href: lectures/11-kmeans.qmd
           - text: "L12-13: Coming Soon"
             href: "#"
       

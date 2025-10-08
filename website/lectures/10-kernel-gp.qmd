@@ -45,4 +45,4 @@ By the end of this lecture, you will:
 
 ---
 
-**Previous**: [← Lecture 9: Ensemble Methods](09-ensemble.qmd) | **Next**: TBD
+**Previous**: [← Lecture 9: Ensemble Methods](09-ensemble.qmd) | **Next**: [Lecture 11: K-Means Clustering →](11-kmeans.qmd)
