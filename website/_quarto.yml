@@ -80,8 +80,8 @@ website:
             href: lectures/11-kmeans.qmd
           - text: "L12: PCA and Dimensionality Reduction"
             href: lectures/12-pca.qmd
-          - text: "L13: Coming Soon"
-            href: "#"
+          - text: "L13: Neural Network Architecture"
+            href: lectures/13-nn-architecture.qmd
       
       - section: "Module 4: Let's See & Chat"
         contents:
