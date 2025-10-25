@@ -22,7 +22,11 @@ website:
       - text: "Schedule"
         href: schedule.qmd
       - text: "Projects"
-        href: projects/project1.qmd
+        menu:
+          - text: "Project 1: KNN Music Recommender"
+            href: projects/project1.qmd
+          - text: "Project 2: Neural Archaeology"
+            href: projects/project2.qmd
       - text: "Resources"
         href: resources.qmd
       - text: "Project Matchmaker"
@@ -102,7 +106,9 @@ website:
         contents:
           - text: "Project 1: KNN Music Recommender"
             href: projects/project1.qmd
-          - text: "Project 2-3: Coming Soon"
+          - text: "Project 2: Neural Archaeology"
+            href: projects/project2.qmd
+          - text: "Project 3: Coming Soon"
             href: "#"
 
 format:
