@@ -65,18 +65,6 @@ Working with real language models (SmolLM-1.7B), you'll discover:
 - **Libraries**: PyTorch, NumPy, scikit-learn, Matplotlib
 - **Compute**: Google Colab (free GPU) or local GPU (recommended)
 
-## Project Questions
-
-The notebook guides you through 6 main questions:
-
-1. **Pooling Strategies** (15 pts) — Compare methods for aggregating token representations
-2. **PCA Implementation** (20 pts) — Build dimensionality reduction from scratch
-3. **K-Means Clustering** (20 pts) — Discover emotion clusters unsupervised
-4. **Natural Emotional Dimensions** (15 pts) — Analyze PCA results for emotions
-5. **Supervised Safety Detection** (15 pts) — Train classifiers on neural activations
-6. **Data Efficiency Curve** (15 pts) — Understand learning with limited labels
-
-**Total**: 100 points
 
 ## Research Context
 
@@ -94,21 +82,7 @@ You'll gain hands-on experience with methods used by AI safety researchers at le
 - [OpenAI Tokenizer Tool](https://platform.openai.com/tokenizer) — Understand how text becomes tokens
 - [Anthropic's Interpretability Research](https://www.anthropic.com/research) — State-of-the-art in neural interpretability
 - [PCA Explained Visually](https://setosa.io/ev/principal-component-analysis/) — Interactive PCA tutorial
-- [HuggingFace Transformers Docs](https://huggingface.co/docs/transformers/) — Model library documentation
 
-## Setup Options
-
-### Google Colab (Recommended for Beginners)
-- Free GPU access (T4)
-- No local installation required
-- ~10 minute setup time
-- See [README.md](https://github.com/jinming99/learn-ml-by-building/blob/main/Project%202%20Neural%20Archaeology%20(instructor)/README.md) for detailed instructions
-
-### Local Setup (Recommended if You Have GPU)
-- Faster iteration
-- More control over environment
-- Requires: Python 3.8+, 8GB+ RAM, GPU recommended
-- Install: `pip install -r requirements.txt`
 
 ---
 
