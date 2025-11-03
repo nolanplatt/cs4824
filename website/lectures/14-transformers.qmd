@@ -41,4 +41,4 @@ This lecture provides the foundation for **[Project 2: Neural Archaeology](../pr
 
 ---
 
-**Previous**: [← Lecture 13: Neural Network Architecture](13-nn-architecture.qmd) | **Next**: [Lecture 15: Advanced NN and CNN →](15-cnn.qmd)
+**Previous**: [← Lecture 13: Neural Network Architecture](13-nn-architecture.qmd) | **Next**: [Lecture 15: Convolutional Neural Networks →](15-cnn.qmd)
